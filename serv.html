@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    static final String url = "jdbc:mysql://localhost/mumbai";
+	static final String name = "root";
+	static final String pass = "sourness";
+	
+public static void main(String[] args) throws SQLException, IOException {
+	Connection c = null;
+	Statement st = null;
+	ResultSet r = null;
+	
+	int choice;
+	c = DriverManager.getConnection(url,name,pass);
+	
+	
+		System.out.println("\n");
+		System.out.println("Menu :");
+		System.out.println("1. Insert Record into table :");
+		System.out.println("2. Update the exist:");
+		System.out.println("3. Display all :");
+		System.out.println("4. Delete the record:");
+		System.out.println("5. Exit");
+		
+		System.out.println("Enter your choice:");
+		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
+		
+		choice = Integer.parseInt(b.readLine());
+		
+		switch (choice) {
+		case 1: {
+			System.out.println("Enter Your First  Name:"); 
+						String FirstName=b.readLine(); 
+						
+						System.out.println("Enter Your Last Name:"); 
+						String LastName=b.readLine(); 
+						
+						System.out.println("Enter your Roll"); 
+						int Roll=Integer.parseInt(b.readLine()); 
+						
+						String sql="insert into mytbl values (?,?,?)"; 
+						PreparedStatement p=c.prepareCall(sql); 
+						
+						p.setString(1, FirstName); 
+						p.setString(2, LastName); 
+						p.setInt(3, Roll); 
+						
+						p.executeUpdate(); 
+						System.out.println("Record Added!!!"); 
+						break;
+</body>
+</html>
+
+<!-- 2nd one -->
+
+package jdbc12;
+
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader; 
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.PreparedStatement; 
+import java.sql.ResultSet; 
+import java.sql.SQLException; 
+import java.sql.Statement; 
+
+public class jdbc {
+	 static final String url = "jdbc:mysql://localhost/mumbai";
+		static final String name = "root";
+		static final String pass = "sourness";
+		
+	public static void main(String[] args) throws SQLException, IOException {
+		Connection c = null;
+		Statement st = null;
+		ResultSet r = null;
+		 
+		int choice;
+		c = DriverManager.getConnection(url,name,pass);
+		
+		
+			System.out.println("\n");
+			System.out.println("Menu :");
+			System.out.println("1. Insert Record into table :");
+			System.out.println("2. Update the exist:");
+			System.out.println("3. Display all :");
+			System.out.println("4. Delete the record:");
+			System.out.println("5. Exit");
+			
+			System.out.println("Enter your choice:");
+			BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
+			
+			choice = Integer.parseInt(b.readLine());
+			
+			switch (choice) {
+			case 1: {
+				System.out.println("First name :");
+				String Firstname = b.readLine();
+				
+				System.out.println("Second name :");
+				String Secondname = b.readLine();
+				
+				System.out.println("Enter roll : ");
+				int Roll = Integer.parseInt(b.readLine());
+				
+				String sql = "insert into mytbl values(?,?,?)";
+				PreparedStatement p=con.prepareCall(sql); 
+				
+				p.setString(1, Firstname);
+				p.setString(2, Secondname);
+				p.setInt(3, Roll);
+				
+				
+				p.executeUpdate(); 
+				System.out.println("Record added");
+				break;
+			}
+			
+}
+}
+}
